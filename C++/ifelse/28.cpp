@@ -1,14 +1,17 @@
 #include <iostream>
 
 using namespace std;
+using ll = long long;
 
 int main(int argc, char *argv[]) {
   cin.tie(nullptr)->sync_with_stdio(false);
 
-  int m, n;
-  cin >> m >> n;
+  ll n, u1, d;
+  cin >> n >> u1 >> d;
 
-  cout << 1ll * m / 2 * n + (m % 2) * 1ll * n / 2;
+  ll sn = n * u1 + (n * (n - 1) * d) / 2;
+
+  cout << sn << endl;
 
   return 0;
 }

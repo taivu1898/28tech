@@ -11,11 +11,9 @@ int main(int argc, char *argv[]) {
   if (c == 90 || c == 122) {
     cout << 'a' << endl;
   } else if (c >= 65 && c <= 90) {
-    c += 33;
-    cout << c << endl;
+    cout << char(c + 33) << endl;
   } else if (c >= 97 && c <= 122) {
-    c += 1;
-    cout << c << endl;
+    cout << char(c + 1) << endl;
   }
   return 0;
 }

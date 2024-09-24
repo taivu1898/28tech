@@ -1,14 +1,15 @@
 #include <iostream>
 
 using namespace std;
+using ll = long long;
 
 int main(int argc, char *argv[]) {
   cin.tie(nullptr)->sync_with_stdio(false);
 
-  int m, n;
-  cin >> m >> n;
+  ll n, s;
+  cin >> n >> s;
 
-  cout << 1ll * m / 2 * n + (m % 2) * 1ll * n / 2;
+  cout << s / n + (s % n != 0);
 
   return 0;
 }
