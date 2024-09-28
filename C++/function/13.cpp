@@ -4,15 +4,16 @@ using namespace std;
 using ll = long long;
 
 bool so_tang(int n) {
-  int save = 10;
-
-  while (n) {
-    int digit = n % 10;
-    if (digit > save) {
-      return false;
-    }
-    save = digit;
+  while (n >= 10) {
+    int r = n % 10;
     n /= 10;
+    while (n) {
+      if (r >= n % 10) {
+        return false;
+      }
+      r = n % 10;
+      n /= 10;
+    }
   }
   return true;
 }

@@ -5,12 +5,15 @@ using ll = long long;
 
 bool so_tang(int n) {
   while (n >= 10) {
-    int digit = n % 10;
-    int so_ke_tiep = n % 100 / 10;
-    if (so_ke_tiep >= digit) {
-      return false;
-    }
+    int r = n % 10;
     n /= 10;
+    while (n) {
+      if (r <= n % 10) {
+        return false;
+      }
+      r = n % 10;
+      n /= 10;
+    }
   }
   return true;
 }
