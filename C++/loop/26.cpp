@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
   cin >> a >> b >> n;
 
   bool ok = false;
-  for (int i = 0; i <= n / a; ++i) {
-    int ans = n - a * i;
+  for (int x = 0; x <= n / a; ++x) {
+    int ans = n - a * x;
     if (ans % b == 0) {
       ok = true;
     }
