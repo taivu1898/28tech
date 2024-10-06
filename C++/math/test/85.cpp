@@ -9,26 +9,25 @@ const int MAX = 1000001;
 
 int arr[MAX];
 
-bool csnt(int n) {
+int dem(int n) {
+  int cnt = 0;
+  while (n) {
+    ++cnt;
+    n /= 10;
+  }
+  return cnt;
+}
+
+int isAmrstrong(int n) {
+  int tmp = n, cnt = dem(n);
+  int s = 0;
   while (n) {
     int digit = n % 10;
-    if (digit != 2 && digit != 3 && digit != 5 && digit != 7) {
-      return false;
-    }
+    s += (int)pow(digit, cnt);
     n /= 10;
   }
 
-  return true;
-}
-
-int snt(int n) {
-  for (int i = 2; i <= sqrt(n); ++i) {
-    if (n % 2 == 0) {
-      return false;
-    }
-  }
-
-  return n > 1;
+  return s == tmp;
 }
 
 int main() {
@@ -36,14 +35,11 @@ int main() {
 
   int a, b;
   cin >> a >> b;
-
   for (int i = a; i <= b; ++i) {
-    if (csnt(i) && snt(i)) {
+    if (isAmrstrong(i)) {
       cout << i << ' ';
     }
   }
-
-  cout << endl;
 
   return 0;
 }

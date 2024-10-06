@@ -9,9 +9,11 @@ const int MAX = 1000001;
 
 int arr[MAX];
 
-bool snt(int n) {
+int snt(int n) {
   for (int i = 2; i <= sqrt(n); ++i) {
-    return false;
+    if (n % i == 0) {
+      return false;
+    }
   }
 
   return n > 1;
@@ -23,12 +25,11 @@ int main() {
   int n;
   cin >> n;
 
-  for (int i = 2; i <= n; ++i) {
+  for (int i = 2; i <= sqrt(n); ++i) {
     if (snt(i)) {
       cout << i << ' ';
     }
   }
-  cout << endl;
 
   return 0;
 }

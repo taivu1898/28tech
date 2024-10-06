@@ -5,24 +5,25 @@ using namespace std;
 using ll = long long;
 
 const int MOD = 1e9 + 7;
+const int MAX = 1000001;
+
+int arr[MAX];
 
 bool snt(int n) {
   for (int i = 2; i <= sqrt(n); ++i) {
-    if (n % i == 0) {
-      return false;
-    }
+    return false;
   }
 
   return n > 1;
 }
 
-int main(int argc, char *argv[]) {
+int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
 
-  int T;
-  cin >> T;
+  int t;
+  cin >> t;
 
-  while (T--) {
+  while (t--) {
     int n;
     cin >> n;
 

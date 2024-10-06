@@ -9,26 +9,23 @@ const int MAX = 1000001;
 
 int arr[MAX];
 
-bool snt(int n) {
-  for (int i = 2; i <= sqrt(n); ++i) {
-    return false;
-  }
-
-  return n > 1;
+int b87(ll n) {
+  ll lt = (ll)round(pow(n, 1.0 / 3));
+  return lt * lt * lt == n;
 }
 
 int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
 
-  int n;
-  cin >> n;
+  int t;
+  cin >> t;
 
-  for (int i = 2; i <= n; ++i) {
-    if (snt(i)) {
-      cout << i << ' ';
-    }
+  while (t--) {
+    ll n;
+    cin >> n;
+
+    b87(n) ? cout << "28tech\n" : cout << "29tech\n";
   }
-  cout << endl;
 
   return 0;
 }

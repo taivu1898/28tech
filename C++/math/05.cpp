@@ -5,8 +5,11 @@ using namespace std;
 using ll = long long;
 
 const int MOD = 1e9 + 7;
+const int MAX = 1000001;
 
-bool snt(int n) {
+int arr[MAX];
+
+int snt(int n) {
   for (int i = 2; i <= sqrt(n); ++i) {
     if (n % i == 0) {
       return false;
@@ -28,9 +31,10 @@ int main() {
 
     for (int i = 2; i <= n / 2; ++i) {
       if (snt(i) && snt(n - i)) {
-        cout << i << ' ' << n - i << endl;
+        cout << i << ' ' << n - i;
       }
     }
+    cout << endl;
   }
 
   return 0;
