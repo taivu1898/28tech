@@ -9,33 +9,35 @@ const int MAX = 1000001;
 
 int arr[MAX];
 
-int snt(int n) {
+int pttsnt(int n) {
   for (int i = 2; i <= sqrt(n); ++i) {
     if (n % i == 0) {
-      return false;
+      int e = 0;
+      while (n % i == 0) {
+        ++e;
+        n /= i;
+      }
+      if (e < 2) {
+        return false;
+      }
     }
   }
 
-  return n > 1;
+  if (n > 1) {
+    return false;
+  }
+
+  return true;
 }
 
 int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
 
-  int n;
-  cin >> n;
-
-  cout << 1 << ' ';
-  for (int i = 2; i <= n; ++i) {
-    if (snt(i)) {
+  int a, b;
+  cin >> a >> b;
+  for (int i = a; i <= b; ++i) {
+    if (pttsnt(i)) {
       cout << i << ' ';
-    } else {
-      for (int j = 2; j <= sqrt(i); ++j) {
-        if (i % j == 0) {
-          cout << j << ' ';
-          break;
-        }
-      }
     }
   }
 
