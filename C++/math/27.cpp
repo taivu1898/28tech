@@ -16,7 +16,7 @@ int pld(int n) {
     tmp /= 10;
   }
 
-  return ans == tmp;
+  return ans == n;
 }
 
 int pttsnt(int n) {
@@ -39,6 +39,21 @@ int pttsnt(int n) {
 
 int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
+
+  int a, b;
+  cin >> a >> b;
+
+  int ok = 0;
+  for (int i = a; i <= b; ++i) {
+    if (pld(i) && pttsnt(i)) {
+      ok = 1;
+      cout << i << ' ';
+    }
+  }
+
+  if (!ok) {
+    cout << -1;
+  }
 
   return 0;
 }
