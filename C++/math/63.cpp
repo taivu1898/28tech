@@ -7,21 +7,26 @@ const int MOD = 1e9 + 7;
 const int MAX = 1000001;
 
 int arr[MAX];
+ll fibon[MAX];
+
+void generate() {
+  fibon[1] = 0;
+  fibon[2] = 1;
+
+  for (int i = 3; i <= MAX; ++i) {
+    fibon[i] = (fibon[i - 1] % MOD + fibon[i - 2] % MOD) % MOD;
+  }
+}
 
 int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
 
+  generate();
+
   int n;
   cin >> n;
-  for (int i = 0; i < n; ++i) {
-    cin >> arr[i];
-  }
 
-  for (int i = 1; i < n; ++i) {
-    if (arr[i] > arr[i - 1]) {
-      cout << arr[i] << ' ';
-    }
-  }
+  cout << fibon[n] << endl;
 
   return 0;
 }

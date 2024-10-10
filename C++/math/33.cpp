@@ -14,10 +14,11 @@ int main() {
   ll n;
   cin >> n;
 
-  ll cnt2 = 0, cnt3 = 0, cnt5 = 0, cnt7 = 0;
+  ll cnt2 = 0, cnt3 = 0, cnt5 = 0, cnt7 = 0, f = 0;
 
   while (n) {
     int d = n % 10;
+    f = f * 10 + d;
     if (d == 2) {
       ++cnt2;
     }
@@ -47,17 +48,27 @@ int main() {
   }
 
   cout << endl;
-  if (cnt2 > 0) {
-    cout << 2 << ' ' << cnt2 << endl;
+
+  while (f != 0) {
+    int digit = f % 10;
+    if (digit == 2 && cnt2 != 0) {
+      cout << 2 << " " << cnt2 << endl;
+      cnt2 = 0;
+    }
+    if (digit == 3 && cnt3 != 0) {
+      cout << 3 << " " << cnt3 << endl;
+      cnt3 = 0;
+    }
+    if (digit == 5 && cnt5 != 0) {
+      cout << 5 << " " << cnt5 << endl;
+      cnt5 = 0;
+    }
+    if (digit == 7 && cnt7 != 0) {
+      cout << 7 << " " << cnt7 << endl;
+      cnt7 = 0;
+    }
+    f /= 10;
   }
-  if (cnt7 > 0) {
-    cout << 7 << ' ' << cnt7 << endl;
-  }
-  if (cnt5 > 0) {
-    cout << 5 << ' ' << cnt5 << endl;
-  }
-  if (cnt3 > 0) {
-    cout << 3 << ' ' << cnt3 << endl;
-  }
+
   return 0;
 }
