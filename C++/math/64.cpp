@@ -6,32 +6,31 @@ using ll = long long;
 const int MOD = 1e9 + 7;
 const int MAX = 1000001;
 
-int arr[MAX];
+int arr[MAX], mark[MAX];
+ll fibon[93];
 
-int fibon(ll n) {
-  if (n == 0 || n == 1 || n == 2) {
-    return true;
+void generateFibonacci() {
+  fibon[0] = 0, fibon[1] = 1;
+  for (int i = 2; i <= 92; ++i) {
+    fibon[i] = fibon[i - 1] + fibon[i - 2];
   }
-  ll a = 1, b = 1;
-  for (int i = 2; i <= n; ++i) {
-    ll c = a + b;
-    if (c == n) {
-      return true;
+}
+
+int isFibonacci(ll n) {
+  for (int i = 0; i <= 92; ++i) {
+    if (fibon[i] == n) {
+      return 1;
     }
-    a = b;
-    b = c;
   }
-
-  return false;
+  return 0;
 }
 
 int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
 
-  ll n;
+  int n;
   cin >> n;
 
-  fibon(n) ? cout << "YES\n" : cout << "NO\n";
-
+  cout << (isFibonacci(n) ? "YES\n" : "NO\n");
   return 0;
 }
