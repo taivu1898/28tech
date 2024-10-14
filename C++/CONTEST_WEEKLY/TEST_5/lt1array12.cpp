@@ -1,4 +1,3 @@
-#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -11,14 +10,11 @@ const int FIB_LIMIT = 93;
 int arr[MAX], mark[MAX];
 ll prefix[MAX], fibon[FIB_LIMIT];
 
-int isPrime(int n) {
-  for (int i = 2; i <= sqrt(n); ++i) {
-    if (n % i == 0) {
-      return 0;
-    }
+int gcd(int a, int b) {
+  if (b == 0) {
+    return a;
   }
-
-  return n > 1;
+  return gcd(b, a % b);
 }
 
 int main() {
@@ -28,9 +24,14 @@ int main() {
   int n;
   cin >> n;
 
-  for (int i = 2; i <= n / 2; ++i) {
-    if (isPrime(i) + isPrime(n / i) == n) {
-      cout << i << ' ' << n / i << endl;
+  for (int i = 0; i < n; ++i) {
+    cin >> arr[i];
+  }
+
+  int cnt = 0, ans = 0, hi = -1;
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j <= i; ++j) {
+      cout << gcd(arr[i], arr[j]) << ' ';
     }
   }
 
