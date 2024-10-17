@@ -1,5 +1,4 @@
-#include <cmath>
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 using ll = long long;
@@ -11,27 +10,39 @@ const int FIB_LIMIT = 93;
 int arr[MAX], mark[MAX];
 ll prefix[MAX], fibon[FIB_LIMIT];
 
-int isPrime(int n) {
-  for (int i = 2; i <= sqrt(n); ++i) {
-    if (n % i == 0) {
-      return 0;
-    }
+void generateFibonacci() {
+  fibon[0] = 0;
+  fibon[1] = 1;
+  for (int i = 2; i < FIB_LIMIT; ++i) {
+    fibon[i] = fibon[i - 1] + fibon[i - 2];
   }
-
-  return n > 1;
 }
 
-int main() {
+int isFibnonacci(ll n) {
+  for (int i = 0; i < FIB_LIMIT; ++i) {
+    if (n == fibon[i]) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+int main(int argc, char *argv[]) {
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n;
-  cin >> n;
+  int t;
+  cin >> t;
 
-  for (int i = 2; i <= n / 2; ++i) {
-    if (isPrime(i) + isPrime(n / i) == n) {
-      cout << i << ' ' << n / i << endl;
-    }
+  generateFibonacci();
+
+  while (t--) {
+    ll n;
+    cin >> n;
+
+    isFibnonacci(n) ? cout << "YES\n" : cout << "NO\n";
   }
 
   return 0;

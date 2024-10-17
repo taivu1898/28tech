@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile and run",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process; ",
+        "g++ \"${file}\" -o \"${workspaceFolder}\\main.exe\"; ",
+        "if (Test-Path \"${workspaceFolder}\\main.exe\") {",
+        "${workspaceFolder}\\main.exe < \"${workspaceFolder}\\input.txt\" > \"${workspaceFolder}\\output.txt\"; ",
+        "Remove-Item -Path \"${workspaceFolder}\\main.exe\"; ",
+        "Remove-Item -Path \"${workspaceFolder}\\main.cpp\"; } else { Write-Host 'Compilation failed!'; }"
+      ],
+      "presentation": {
+        "reveal": "silent"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": ["relative", "${workspaceRoot}"],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      }
+    }
+  ]
+}
