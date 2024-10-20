@@ -8,8 +8,17 @@ const int MOD = 1e9 + 7;
 const int MAX = 1000001;
 const int FIB_LIMIT = 93;
 
-int arr[MAX];
-ll prefix[MAX], fibon[FIB_LIMIT], mark[28];
+int arr[MAX], mark[10];
+ll prefix[MAX], fibon[FIB_LIMIT];
+
+int snt(int n) {
+  for (int i = 2; i <= sqrt(n); ++i) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return n > 1;
+}
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -22,20 +31,23 @@ int main() {
 
   int n;
   cin >> n;
-  for (int i = 1; i <= n; i++) {
+
+  for (int i = 0; i < n; ++i) {
     cin >> arr[i];
-    mark[arr[i] % 28]++;
   }
 
-  ll ans = 0;
-  for (int i = 0; i <= 14; ++i) {
-    if (i == 14 || i == 0) {
-      ans = ans + (mark[i] * (mark[i] - 1)) / 2;
-    } else {
-      ans = ans + (mark[i] * mark[28 - i]);
+  int count = 0;
+  for (int i = 0; i < n; ++i) {
+    int current_sum = 0;
+    for (int j = i; j < n; ++j) {
+      current_sum += arr[j];
+
+      if (snt(current_sum)) {
+        ++count;
+      }
     }
   }
 
-  cout << ans << endl;
+  cout << count << endl;
   return 0;
 }

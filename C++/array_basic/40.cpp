@@ -1,5 +1,4 @@
 #include <iostream>
-#include <math.h>
 
 using namespace std;
 using ll = long long;
@@ -8,8 +7,8 @@ const int MOD = 1e9 + 7;
 const int MAX = 1000001;
 const int FIB_LIMIT = 93;
 
-int arr[MAX];
-ll prefix[MAX], fibon[FIB_LIMIT], mark[28];
+int arr[MAX], mark[10];
+ll prefix[MAX], fibon[FIB_LIMIT];
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -22,20 +21,21 @@ int main() {
 
   int n;
   cin >> n;
-  for (int i = 1; i <= n; i++) {
+
+  for (int i = 0; i < n; ++i) {
     cin >> arr[i];
-    mark[arr[i] % 28]++;
   }
 
-  ll ans = 0;
-  for (int i = 0; i <= 14; ++i) {
-    if (i == 14 || i == 0) {
-      ans = ans + (mark[i] * (mark[i] - 1)) / 2;
-    } else {
-      ans = ans + (mark[i] * mark[28 - i]);
+  for (int i = 0; i < n; ++i) {
+    if (arr[i] < 0) {
+      arr[i] *= -1;
     }
+    countDigit(arr[i]);
   }
 
-  cout << ans << endl;
+  for (int i = 0; i < 10; ++i) {
+    cout << i << ' ' << mark[i] << endl;
+  }
+
   return 0;
 }
