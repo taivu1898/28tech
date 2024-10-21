@@ -1,7 +1,5 @@
-#include <cmath>
-#include <iomanip>
 #include <iostream>
-#include <utility>
+#include <iterator>
 #include <vector>
 
 using namespace std;
@@ -19,21 +17,23 @@ int main() {
 
   int n;
   cin >> n;
-  vector<pair<int, int>> points;
+  vector<int> nums;
   while (n--) {
-    int x, y;
-    cin >> x >> y;
-    points.push_back(make_pair(x, y));
+    int tmp;
+    cin >> tmp;
+    nums.push_back(tmp);
   }
 
-  vector<double> distance;
-  for (auto p : points) {
-    double dist = sqrt(p.first * p.first + p.second * p.second);
-    distance.push_back(dist);
+  int l, r;
+  cin >> l >> r;
+  for (auto itr = nums.begin() + l; itr <= nums.begin() + r; ++itr) {
+    cout << *itr << ' ';
   }
 
-  for (auto dist : distance) {
-    cout << fixed << setprecision(2) << dist << ' ';
+  cout << endl;
+  for (auto itr = nums.begin() + r; itr >= nums.begin() + l; --itr) {
+    cout << *itr << ' ';
   }
+
   return 0;
 }

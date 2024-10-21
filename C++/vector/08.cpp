@@ -1,5 +1,3 @@
-#include <cmath>
-#include <iomanip>
 #include <iostream>
 #include <utility>
 #include <vector>
@@ -19,21 +17,23 @@ int main() {
 
   int n;
   cin >> n;
-  vector<pair<int, int>> points;
+  vector<pair<pair<int, int>, int>> Oxyz;
   while (n--) {
-    int x, y;
-    cin >> x >> y;
-    points.push_back(make_pair(x, y));
+    int x, y, z;
+    cin >> x >> y >> z;
+    Oxyz.push_back(make_pair(make_pair(x, y), z));
   }
 
-  vector<double> distance;
-  for (auto p : points) {
-    double dist = sqrt(p.first * p.first + p.second * p.second);
-    distance.push_back(dist);
+  vector<ll> s;
+  for (auto item : Oxyz) {
+    ll sum = 0;
+    sum = item.first.first + item.first.second + item.second;
+    s.push_back(sum);
   }
 
-  for (auto dist : distance) {
-    cout << fixed << setprecision(2) << dist << ' ';
+  for (auto item : s) {
+    cout << item << ' ';
   }
+
   return 0;
 }
