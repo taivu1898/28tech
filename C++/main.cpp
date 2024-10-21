@@ -1,15 +1,30 @@
+
 #include <iostream>
-#include <math.h>
+#include <vector>
 
 using namespace std;
-using ll = long long;
 
-const int MOD = 1e9 + 7;
-const int MAX = 1000001;
-const int FIB_LIMIT = 93;
+// Hàm xoay bên trái
+void rotate_left(vector<vector<int>> &grid) {
+  int temp = grid[0][0];
+  grid[0][0] = grid[0][1];
+  grid[0][1] = grid[0][2];
+  grid[0][2] = grid[1][2];
+  grid[1][2] = grid[1][1];
+  grid[1][1] = grid[1][0];
+  grid[1][0] = temp;
+}
 
-int arr[MAX];
-ll prefix[MAX], fibon[FIB_LIMIT], mark[28];
+// Hàm xoay bên phải
+void rotate_right(vector<vector<int>> &grid) {
+  int temp = grid[0][0];
+  grid[0][0] = grid[1][0];
+  grid[1][0] = grid[1][1];
+  grid[1][1] = grid[1][2];
+  grid[1][2] = grid[0][2];
+  grid[0][2] = grid[0][1];
+  grid[0][1] = temp;
+}
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -17,25 +32,38 @@ int main() {
   errno_t err1 = freopen_s(&infile, "input.txt", "r", stdin);
   errno_t err2 = freopen_s(&outfile, "output.txt", "w", stdout);
 #endif
+
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
+  vector<vector<int>> grid(2, vector<int>(3));
 
-  int n;
-  cin >> n;
-  for (int i = 1; i <= n; i++) {
-    cin >> arr[i];
-    mark[arr[i] % 28]++;
-  }
-
-  ll ans = 0;
-  for (int i = 0; i <= 14; ++i) {
-    if (i == 14 || i == 0) {
-      ans = ans + (mark[i] * (mark[i] - 1)) / 2;
-    } else {
-      ans = ans + (mark[i] * mark[28 - i]);
+  // Nhập dữ liệu đầu vào
+  for (int i = 0; i < 2; ++i) {
+    for (int j = 0; j < 3; ++j) {
+      cin >> grid[i][j];
     }
   }
 
-  cout << ans << endl;
+  int N;
+  cin >> N; // Số lượt quay
+  string commands;
+  cin >> commands; // Chuỗi các lệnh 'L' hoặc 'R'
+
+  // Thực hiện các lệnh xoay
+  for (char command : commands) {
+    if (command == 'L') {
+      rotate_left(grid); // Xoay bên trái
+    } else if (command == 'R') {
+      rotate_right(grid); // Xoay bên phải
+    }
+  }
+
+  // In ra kết quả cuối cùng
+  for (int i = 0; i < 2; ++i) {
+    for (int j = 0; j < 3; ++j) {
+      cout << grid[i][j] << " ";
+    }
+    cout << endl;
+  }
   return 0;
 }
