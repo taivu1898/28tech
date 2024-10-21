@@ -1,10 +1,9 @@
-#include <algorithm>
 #include <iostream>
-#include <numeric>
-#include <vector>
 
 using namespace std;
 using ll = long long;
+
+const int MOD = 1e9 + 7;
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -15,18 +14,25 @@ int main() {
 
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
-
   int n;
   cin >> n;
-  vector<int> nums;
-  while (n--) {
-    int tmp;
-    cin >> tmp;
-    nums.push_back(tmp);
+  char a[n];
+  for (int i = 0; i < n; ++i) {
+    cin >> a[i];
   }
+  char t[6] = {'2', '8', 't', 'e', 'c', 'h'};
+  int j = 0;
+  for (int i = 0; i < n; i += 2) {
+    if (a[i] == t[j]) {
+      ++j;
+    }
+    if (j == 6)
+      break;
+  }
+  if (j == 6)
+    cout << "28TECH";
+  else
+    cout << "HCET82";
 
-  cout << *min_element(nums.begin(), nums.end()) << endl;
-  cout << *max_element(nums.begin(), nums.end()) << endl;
-  cout << accumulate(nums.begin(), nums.end(), 0) << endl;
   return 0;
 }
