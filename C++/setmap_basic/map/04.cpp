@@ -21,7 +21,12 @@ int main() {
   map<int, int> nums;
   for (int i = 0; i < n; ++i) {
     cin >> a[i];
-    nums[a[i]]++;
+  }
+
+  for (int i = 0; i < m; ++i) {
+    int tmp;
+    cin >> tmp;
+    nums[tmp]++;
   }
 
   for (auto i : a) {
