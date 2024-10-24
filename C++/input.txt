@@ -1,3 +1,0 @@
-6 10
-2 8 t e c 1
-t e c 1 a p p l e x
