@@ -1,10 +1,11 @@
 #include <iostream>
+#include <set>
 #include <vector>
 
 using namespace std;
+using ll = long long;
 
-const int MAX_CHAR = 256;
-bool presentInB[MAX_CHAR] = {false};
+const int MOD = 10000007;
 
 int main() {
 #ifndef ONLINE_JUDGE
@@ -12,35 +13,26 @@ int main() {
   errno_t err1 = freopen_s(&infile, "input.txt", "r", stdin);
   errno_t err2 = freopen_s(&outfile, "output.txt", "w", stdout);
 #endif
+
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
   int n, m;
   cin >> n >> m;
-
-  vector<char> A(n);
+  vector<int> a(n);
   for (int i = 0; i < n; ++i) {
-    cin >> A[i];
+    cin >> a[i];
   }
-
-  vector<char> B(m);
+  multiset<int> b;
   for (int i = 0; i < m; ++i) {
-    cin >> B[i];
+    int tmp;
+    cin >> tmp;
+    b.insert(tmp);
   }
 
-  for (char c : B) {
-    presentInB[(unsigned char)c] = true;
+  for (int i = 0; i < a.size(); ++i) {
+    cout << b.count(a[i]) << ' ';
   }
 
-  bool printed[MAX_CHAR] = {false};
-
-  for (char c : A) {
-    if (presentInB[(unsigned char)c] && !printed[(unsigned char)c]) {
-      cout << c << ' ';
-      printed[(unsigned char)c] = true;
-    }
-  }
-
-  cout << endl;
   return 0;
 }
