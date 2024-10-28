@@ -3,9 +3,9 @@
 using namespace std;
 using ll = long long;
 
-const int MOD = 10000007;
+const int MOD = 100000007;
 
-int main() {
+int main(int argc, char *argv[]) {
 #ifndef ONLINE_JUDGE
   FILE *infile = nullptr, *outfile = nullptr;
   errno_t err1 = freopen_s(&infile, "input.txt", "r", stdin);
