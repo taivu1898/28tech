@@ -1,7 +1,6 @@
-#include <algorithm>
 #include <iostream>
 #include <set>
-#include <vector>
+#include <utility>
 
 using namespace std;
 using ll = long long;
@@ -18,32 +17,16 @@ int main(int argc, char *argv[]) {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n, m;
-  cin >> n >> m;
-
-  set<int> a, b, ans;
-
+  int n;
+  cin >> n;
+  set<pair<int, int>> se;
   for (int i = 0; i < n; ++i) {
-    int tmp;
-    cin >> tmp;
-    a.insert(tmp);
+    int x, y;
+    cin >> x >> y;
+    se.insert({x, y});
   }
 
-  for (int i = 0; i < m; ++i) {
-    int tmp;
-    cin >> tmp;
-    b.insert(tmp);
-  }
-
-  for (auto i : a) {
-    if (b.find(i) == b.end()) {
-      ans.insert(i);
-    }
-  }
-
-  for (auto i : ans) {
-    cout << i << ' ';
-  }
+  cout << se.size() << endl;
 
   return 0;
 }

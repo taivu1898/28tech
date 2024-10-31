@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <set>
 #include <vector>
@@ -20,13 +19,11 @@ int main(int argc, char *argv[]) {
 
   int n, m;
   cin >> n >> m;
-
-  set<int> a, b, ans;
+  vector<int> a(n);
+  set<int> b;
 
   for (int i = 0; i < n; ++i) {
-    int tmp;
-    cin >> tmp;
-    a.insert(tmp);
+    cin >> a[i];
   }
 
   for (int i = 0; i < m; ++i) {
@@ -35,14 +32,11 @@ int main(int argc, char *argv[]) {
     b.insert(tmp);
   }
 
-  for (auto i : a) {
-    if (b.find(i) == b.end()) {
-      ans.insert(i);
+  for (int i = 0; i < n; ++i) {
+    if (b.find(a[i]) != b.end()) {
+      cout << a[i] << ' ';
+      b.erase(a[i]);
     }
-  }
-
-  for (auto i : ans) {
-    cout << i << ' ';
   }
 
   return 0;

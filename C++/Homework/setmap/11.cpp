@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
   int n, m;
   cin >> n >> m;
 
-  set<int> a, b, ans;
+  set<int> a, b;
 
   for (int i = 0; i < n; ++i) {
     int tmp;
@@ -37,12 +37,8 @@ int main(int argc, char *argv[]) {
 
   for (auto i : a) {
     if (b.find(i) == b.end()) {
-      ans.insert(i);
+      cout << i << ' ';
     }
-  }
-
-  for (auto i : ans) {
-    cout << i << ' ';
   }
 
   return 0;

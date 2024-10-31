@@ -1,7 +1,5 @@
-#include <algorithm>
 #include <iostream>
-#include <set>
-#include <vector>
+#include <map>
 
 using namespace std;
 using ll = long long;
@@ -18,31 +16,29 @@ int main(int argc, char *argv[]) {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n, m;
-  cin >> n >> m;
-
-  set<int> a, b, ans;
-
-  for (int i = 0; i < n; ++i) {
-    int tmp;
-    cin >> tmp;
-    a.insert(tmp);
-  }
-
-  for (int i = 0; i < m; ++i) {
-    int tmp;
-    cin >> tmp;
-    b.insert(tmp);
-  }
-
-  for (auto i : a) {
-    if (b.find(i) == b.end()) {
-      ans.insert(i);
+  int n;
+  cin >> n;
+  map<int, int> mp;
+  for (int i = 1; i <= n; ++i) {
+    for (int j = 1; j <= n; ++j) {
+      int tmp;
+      cin >> tmp;
+      if (mp[tmp] == i - 1) {
+        mp[tmp] = i;
+      }
     }
   }
 
-  for (auto i : ans) {
-    cout << i << ' ';
+  bool ok = false;
+  for (auto i : mp) {
+    if (i.second > 1) {
+      ok = true;
+      cout << i.first << ' ';
+    }
+  }
+
+  if (!ok) {
+    cout << "NOT FOUND\n";
   }
 
   return 0;
