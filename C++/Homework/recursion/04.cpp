@@ -1,4 +1,3 @@
-#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -6,21 +5,13 @@ using ll = long long;
 
 const int MOD = 100000007;
 
-ll handle(int n) {
+ll sum(int n) {
   if (n == 1) {
-    return 0;
+    return -1;
+  } else if (n % 2 != 0) {
+    return -n + sum(n - 1);
   } else {
-    int ans1 = 51, ans2 = 51, ans3 = 51;
-    if (n % 2 == 0) {
-      ans1 = handle(n / 2) + 1;
-    }
-    if (n % 3 == 0) {
-      ans1 = handle(n / 3) + 1;
-    }
-    if (n > 1) {
-      ans3 = handle(n - 1) + 1;
-    }
-    return fmin(ans1, fmin(ans2, ans3));
+    return n + sum(n - 1);
   }
 }
 
@@ -37,7 +28,7 @@ int main(int argc, char *argv[]) {
   int n;
   cin >> n;
 
-  cout << handle(n) << endl;
+  cout << sum(n) << endl;
 
   return 0;
 }
