@@ -1,17 +1,13 @@
 #include <cmath>
 #include <iostream>
-#include <set>
-#include <utility>
 
 using namespace std;
 using ll = long long;
 
 const int MOD = 100000007;
-const int MAX = 501;
+const int MAX = 500;
 
-int a[MAX][MAX];
-
-int snt(int n) {
+int prime(int n) {
   for (int i = 2; i <= sqrt(n); ++i) {
     if (n % i == 0) {
       return false;
@@ -31,24 +27,20 @@ int main(int argc, char *argv[]) {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n, u, v;
-  cin >> n;
+  int n, m;
+  cin >> n >> m;
+  int a[MAX][MAX];
   for (int i = 0; i < n; ++i) {
-    for (int j = 0; j < n; ++j) {
+    for (int j = 0; j < m; ++j) {
       cin >> a[i][j];
     }
   }
 
-  cout << "Pattern 1:\n";
-  for (int i = 1; i < n; ++i) {
-    for (int j = 1; j < n; ++j) {
-      swap(a[i][j + 1], a[i + 1][j]);
-    }
-  }
-
   for (int i = 0; i < n; ++i) {
-    for (int j = 0; j < n; ++j) {
-      cout << a[i][j] << ' ';
+    for (int j = 0; j < m; ++j) {
+      if (prime(a[i][j])) {
+        cout << a[i][j] << ' ';
+      }
     }
     cout << endl;
   }
