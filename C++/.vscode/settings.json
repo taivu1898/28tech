@@ -1,4 +1,12 @@
 {
   "C_Cpp.errorSquiggles": "disabled",
-  "code-runner.runInTerminal": false
+  "code-runner.runInTerminal": true,
+  "files.associations": {
+    "vector": "cpp",
+    "ostream": "cpp",
+    "xtree": "cpp",
+    "xutility": "cpp",
+    "utility": "cpp"
+  },
+  "C_Cpp.clang_format_fallbackStyle": "Google"
 }

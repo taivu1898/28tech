@@ -39,6 +39,18 @@ int main() {
     }
   }
 
+  // auto secondMax = min;
+  // auto secondMin = max;
+
+  // for (auto c : chars) {
+  //   if (c > secondMax && c < max) {
+  //     secondMax = c;
+  //   }
+  //   if (c < secondMin && c > min) {
+  //     secondMin = c;
+  //   }
+  // }
+
   cout << max << ' ' << min << ' ' << secondMax << ' ' << secondMin << endl;
 
   return 0;

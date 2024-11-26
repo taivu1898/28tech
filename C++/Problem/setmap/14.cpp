@@ -19,22 +19,21 @@ int main(int argc, char *argv[]) {
 
   int n, m;
   cin >> n >> m;
-  vector<char> v;
+  set<int> A, B;
   for (int i = 0; i < n; ++i) {
-    char tmp;
+    int tmp;
     cin >> tmp;
-    v.push_back(tmp);
+    A.insert(tmp);
   }
 
-  set<char> s;
   for (int i = 0; i < m; ++i) {
-    char tmp;
+    int tmp;
     cin >> tmp;
-    s.insert(tmp);
+    B.insert(tmp);
   }
 
-  for (auto &i : v) {
-    if (s.find(i) != s.end()) {
+  for (auto i : A) {
+    if (B.find(i) == B.end()) {
       cout << i << ' ';
     }
   }

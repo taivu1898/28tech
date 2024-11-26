@@ -1,21 +1,11 @@
-#include <cmath>
 #include <iostream>
+#include <set>
+#include <vector>
 
 using namespace std;
 using ll = long long;
 
 const int MOD = 100000007;
-const int MAX = 500;
-
-int prime(int n) {
-  for (int i = 2; i <= sqrt(n); ++i) {
-    if (n % i == 0) {
-      return false;
-    }
-  }
-
-  return n > 1;
-}
 
 int main(int argc, char *argv[]) {
 #ifndef ONLINE_JUDGE
@@ -29,20 +19,23 @@ int main(int argc, char *argv[]) {
 
   int n, m;
   cin >> n >> m;
-  int a[MAX][MAX];
+  set<int> A, B;
   for (int i = 0; i < n; ++i) {
-    for (int j = 0; j < m; ++j) {
-      cin >> a[i][j];
-    }
+    int tmp;
+    cin >> tmp;
+    A.insert(tmp);
   }
 
-  for (int i = 0; i < n; ++i) {
-    for (int j = 0; j < m; ++j) {
-      if (prime(a[i][j])) {
-        cout << a[i][j] << ' ';
-      }
+  for (int i = 0; i < m; ++i) {
+    int tmp;
+    cin >> tmp;
+    B.insert(tmp);
+  }
+
+  for (auto i : A) {
+    if (B.find(i) == B.end()) {
+      cout << i << ' ';
     }
-    cout << endl;
   }
 
   return 0;

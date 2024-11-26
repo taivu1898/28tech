@@ -1,11 +1,16 @@
+#include <iomanip>
 #include <iostream>
-#include <set>
-#include <vector>
+#include <string>
 
 using namespace std;
 using ll = long long;
 
 const int MOD = 100000007;
+
+struct Student {
+  string id, name, dob, id_class;
+  double gpa;
+};
 
 int main(int argc, char *argv[]) {
 #ifndef ONLINE_JUDGE
@@ -17,27 +22,16 @@ int main(int argc, char *argv[]) {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n, m;
-  cin >> n >> m;
-  vector<char> v;
-  for (int i = 0; i < n; ++i) {
-    char tmp;
-    cin >> tmp;
-    v.push_back(tmp);
-  }
+  string id, name, dob, id_class;
+  getline(cin, id);
+  getline(cin, name);
+  getline(cin, dob);
+  getline(cin, id_class);
+  double gpa;
+  cin >> gpa;
 
-  set<char> s;
-  for (int i = 0; i < m; ++i) {
-    char tmp;
-    cin >> tmp;
-    s.insert(tmp);
-  }
-
-  for (auto &i : v) {
-    if (s.find(i) != s.end()) {
-      cout << i << ' ';
-    }
-  }
+  cout << id << ' ' << name << ' ' << dob << ' ' << id_class << fixed
+       << setprecision(2) << ' ' << gpa << endl;
 
   return 0;
 }

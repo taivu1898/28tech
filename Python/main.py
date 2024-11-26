@@ -1,13 +1,17 @@
-from math import sqrt
+import math
 
 
-def isPrime(n: int):
-    for i in range(2, int(sqrt(n) + 1)):
+def sumDivisor(n: int) -> int:
+    s = 0
+    for i in range(1, int(math.sqrt(n + 1))):
         if n % i == 0:
-            return False
-    return n > 1
+            s += i
+            if n // i != i:
+                s += n // i
+    return s
 
 
 if __name__ == "__main__":
     n = int(input())
-    print(isPrime(n) if "YES" else "NO")
+    result = sumDivisor(n)
+    print(result)
